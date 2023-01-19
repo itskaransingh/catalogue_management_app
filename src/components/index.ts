@@ -1,0 +1,6 @@
+export {default as ProductCard} from './ProductCard'
+export {default as Select} from './Select'
+export {default as Analytics} from './Analytics'
+export {default as Loader} from './Loader'
+export {default as Footer} from './Footer'
+export {default as AnalytBtn} from './AnalytBtn'
