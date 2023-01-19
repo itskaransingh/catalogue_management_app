@@ -16,7 +16,7 @@ export const cartContextDefaultValue: AppContextInterface = {
   catvalue: 'All',
   setcatvalue:()=> 'All',
   products:null,
-  categories: null,
+  categories: [],
   analyticsdata: {}
 }
 
@@ -32,7 +32,7 @@ export const AppContextProv = ({ children }: { children: any }) => {
   const [isloading, setIsloading] = useState(false);
   const [catvalue, setcatvalue] = useState("All");
   const [products, setProducts] = useState(null);
-  const [categories, setcategories] = useState(null);
+  const [categories, setcategories] = useState([]);
 
   useEffect(() => {
     setIsloading(true);
