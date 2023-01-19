@@ -1,9 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import axios from "axios";
 import { createContext, useContext } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+interface AppContextInterface {
+  isloading: boolean;
+  catvalue: string;
+  setcatvalue: Dispatch<SetStateAction<string>>;
+  products: any;
+  categories: any;
+  analyticsdata : any
+}
 
-const AppContext = createContext("");
+export const cartContextDefaultValue: AppContextInterface = {
+  isloading: false,
+  catvalue: 'All',
+  setcatvalue:()=> 'All',
+  products:null,
+  categories: null,
+  analyticsdata: {}
+}
+
+const AppContext = createContext <AppContextInterface>(cartContextDefaultValue);
+
+
+
+
 
 export const AppContextProv = ({ children }: { children: any }) => {
   ChartJS.register(ArcElement, Tooltip, Legend);
@@ -11,7 +32,7 @@ export const AppContextProv = ({ children }: { children: any }) => {
   const [isloading, setIsloading] = useState(false);
   const [catvalue, setcatvalue] = useState("All");
   const [products, setProducts] = useState(null);
-  const [categories, setcategories] = useState([]);
+  const [categories, setcategories] = useState(null);
 
   useEffect(() => {
     setIsloading(true);
